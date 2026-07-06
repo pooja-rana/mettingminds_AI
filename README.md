@@ -4,16 +4,21 @@ A docker-ready AI meeting memory assistant backend.
 
 ## Installation
 
-1. Create a virtual environment:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/pooja-rana/mettingminds_AI.git
+   cd meetingmind-ai
+   ```
+2. Create a virtual environment:
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    ```
-2. Install dependencies:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Set environment variables in `.env` if using OpenAI:
+4. Set environment variables in `.env` if using OpenAI:
    ```bash
    OPENAI_API_KEY=your_api_key
    ```
