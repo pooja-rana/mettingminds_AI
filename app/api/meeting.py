@@ -14,6 +14,7 @@ router = APIRouter(prefix="/meetings", tags=["meetings"])
 
 @router.post("/", response_model=MeetingRead)
 def create_meeting(meeting_create: MeetingCreate, repository: MeetingRepository = Depends(get_meeting_repository)):
+    """Create a new meeting record and return the saved meeting."""
     logger.info("Received request to create meeting: %s", meeting_create.title)
     meeting_service = MeetingService(repository)
     meeting = meeting_service.create_meeting(meeting_create)
@@ -23,6 +24,7 @@ def create_meeting(meeting_create: MeetingCreate, repository: MeetingRepository 
 
 @router.get("/", response_model=list[MeetingRead])
 def list_meetings(repository: MeetingRepository = Depends(get_meeting_repository)):
+    """Return all stored meetings, newest first."""
     logger.info("Received request to list meetings")
     meeting_service = MeetingService(repository)
     meetings = meeting_service.list_meetings()
@@ -32,6 +34,7 @@ def list_meetings(repository: MeetingRepository = Depends(get_meeting_repository
 
 @router.get("/{meeting_id}", response_model=MeetingRead)
 def get_meeting(meeting_id: int, repository: MeetingRepository = Depends(get_meeting_repository)):
+    """Fetch a single meeting by ID."""
     logger.info("Received request to get meeting id=%s", meeting_id)
     meeting = repository.get_by_id(meeting_id)
     if not meeting:

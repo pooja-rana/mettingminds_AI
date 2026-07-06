@@ -13,6 +13,7 @@ router = APIRouter(prefix="/ask", tags=["ask"])
 
 @router.post("/", response_model=dict)
 def ask_question(request: AskRequest, repository: MeetingRepository = Depends(get_meeting_repository)):
+    """Answer a question using the stored meeting context."""
     logger.info("Received ask request: %s", request.question)
     meeting_service = MeetingService(repository)
     question, answer, context = meeting_service.ask_question(request.question)
