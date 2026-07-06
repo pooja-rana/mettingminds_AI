@@ -46,5 +46,4 @@ pytest -q
 ## Documentation
 
 - `ARCHITECTURE.md` - architecture overview
-- `DEMO.md` - demo walkthrough script
 - `PROBLEM_STATEMENT.md` - project problem statement and solution description
